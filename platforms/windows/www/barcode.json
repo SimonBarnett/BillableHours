@@ -1,0 +1,36 @@
+﻿{
+  "name": "SimonB",
+  "doc": "PR16000050",
+  "type": "p",
+  "append": [
+    {      
+      "desc": "Day onsite",
+      "qty": "8"
+    },
+    {
+      "part": "EXP-TRAVELTIME",
+      "desc": "Travel Home",
+      "qty": "1"
+    },
+    {
+      "part": "EXP-MILES",
+      "desc": "Travel to site",
+      "qty": "40"
+    },
+    {
+      "part": "EXP-SUBSISTENCE",
+      "desc": "Lunch",
+      "qty": "1"
+    },
+    {
+      "part": "EXP-TRAVELTIME",
+      "desc": "Travel Home",
+      "qty": "1"
+    },
+    {
+      "part": "EXP-MILES",
+      "desc": "Travel from site",
+      "qty": "40"
+    }
+  ]
+}

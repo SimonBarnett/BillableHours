@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    
+    <title>BillableHours</title>
+  
+    <script>
+        var
+            curform,
+            dr = 0,
+            pr = 0;
+    </script>
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/platformOverrides.js"></script>       
+
+    <script type="text/javascript" src="scripts/index.js"></script> 
+    <script src="scripts/billable.js" type="text/javascript"></script>    
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js" type="text/javascript"></script>
+    <script src="https://cdn.priority-software.com/upgrades/var/api/v1.6/priorityapp.nocache.js"></script>
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+        <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <link href="css/ionic.app.css" rel="stylesheet">
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+        -->    
+
+    <script>
+
+        priorityReady = function () {
+            pr = 1;
+            if (dr == 1 && localStorage.getItem('name')) {
+                PriorityLogin().then(() => { }).catch(er => {
+                    if (er !== "") {
+                        navigator.notification.confirm(
+                            er,
+                            function () { },
+                            "Error",
+                            ["Ok"]
+                        );
+                    }
+                });
+            }
+        };
+
+    </script>
+
+    <style type="text/css">
+        .platform-ios .manual-ios-statusbar-padding {
+            padding-top: 20px;
+        }
+
+        .manual-remove-top-padding {
+            padding-top: 0px;
+        }
+
+            .manual-remove-top-padding .scroll {
+                padding-top: 0px !important;
+            }
+
+        ion-list.manual-list-fullwidth div.list, .list.card.manual-card-fullwidth {
+            margin-left: -10px;
+            margin-right: -10px;
+        }
+
+            ion-list.manual-list-fullwidth div.list > .item, .list.card.manual-card-fullwidth > .item {
+                border-radius: 0px;
+                border-left: 0px;
+                border-right: 0px;
+            }
+
+        .show-list-numbers-and-dots ul {
+            list-style-type: disc;
+            padding-left: 40px;
+        }
+
+        .show-list-numbers-and-dots ol {
+            list-style-type: decimal;
+            padding-left: 40px;
+        }
+
+        .button {
+            border-color: transparent;
+            background-color: #f8f8f8;
+            color: #444;
+            position: relative;
+            display: inline-block;
+            margin: 0;
+            padding: 0 12px;
+            min-width: 52px;
+            min-height: 47px;
+            border-width: 1px;
+            border-style: solid;
+            border-radius: 4px;
+            vertical-align: top;
+            text-align: center;
+            text-overflow: ellipsis;
+            font-size: 16px;
+            line-height: 42px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .button.button-positive {
+            border-color: transparent;
+            background-color: #387ef5;
+            color: #fff;
+        }
+
+        .button.button-block {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        </style>    
+
+</head>
+<body >    
+    <div style="margin: 5px; text-align: center; ">
+        <img id="photo" src="images/medatech.png" class="icon ion-image" style="color: rgb(136, 136, 136); font-size: 64px; vertical-align: middle;">
+    </div>
+    <hr>
+    <div id="details">
+        <div id="cred" style="display:none;">
+            <table style="width:100%">
+                <tr >
+                    <td style="text-align:center; width: 32px;">
+                        <img src="images/user.png"></td>
+                    <td>
+                        <p id="credentials" style="color:#000000;"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align:center">
+                        <img src="images/home.png"></td>
+                    <td>
+                        <p id="server" style="color:#000000;"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align:center">
+                        <img src="images/pri.png"></td>
+                    <td>
+                        <p id="env" style="color:#000000;"></p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="nocred" style="display:block;text-align: center;vertical-align: middle"> 
+            <p style="height:110px;vertical-align: middle; text-align: center; padding-top: 32px;">Please scan your config QR.<br><br><img src="images/settings.png"></p>
+            
+        </div>
+    </div>
+    <hr>
+    <button class="button button-positive button-block" id="scan-button" onclick="scan()"><img src="images/scan.png" class="icon ion-image" style="vertical-align: middle;text-align: center;"></button>
+    <button style="display:none;" class="button button-positive button-block" id="config-test-button" onclick="testconfig()">Test Config</button>
+    <button style="display:none;" class="button button-positive button-block" id="barcode-test-button" onclick="testbarcode()">Test Barcode</button>
+    <button style="display:none;" class="button button-positive button-block" id="camera-test-button" onclick="testcamera()">Test Camera</button>
+
+</body>
+
+</html>

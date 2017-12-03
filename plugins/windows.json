@@ -1,0 +1,34 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "com.filfatstudios.spinnerdialog": {
+            "PACKAGE_NAME": "BillableHours"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "BillableHours"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "BillableHours"
+        },
+        "phonegap-plugin-barcodescanner": {
+            "PACKAGE_NAME": "BillableHours"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "BillableHours"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "BillableHours"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "BillableHours"
+        }
+    }
+}
